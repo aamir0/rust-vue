@@ -1,0 +1,9 @@
+name: Build Rust
+run-name: Rust build triggered by ${{ github.actor }}
+on: [push]
+jobs:
+    Build-Rust:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Install dependencies
+              run: echo "Installing dependencies"
