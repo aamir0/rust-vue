@@ -11,5 +11,7 @@ jobs:
               uses: actions-rs/toolchain@v1
               with:
                 toolchain: stable
+            - name: Run unit tests
+              run: cargo test
             - name: Build Rust project
               run: cargo build --release --all-features

@@ -13,5 +13,7 @@ jobs:
                 version: 9
             - name: Install dependencies
               run: pnpm install
+            - name: Run unit tests
+              run: pnpm exec vitest
             - name: Build Vue project
               run: pnpm build
