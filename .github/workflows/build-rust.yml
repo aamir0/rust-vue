@@ -5,8 +5,11 @@ jobs:
     Build-Rust:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions-rs/toolchain@v1
+            - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
+              uses: actions/checkout@v4
+            - name: Install Rust toolchain
+              uses: actions-rs/toolchain@v1
               with:
                 toolchain: stable
-            - run: cargo build --release --all-features
+            - name: Build Rust project
+              run: cargo build --release --all-features
