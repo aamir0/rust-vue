@@ -1,0 +1,13 @@
+name: Build Vue
+run-name: Vue build triggered by ${{ github.actor }}
+on: [push]
+jobs:
+    Build-Vue:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
+              uses: actions/checkout@v4
+            - name: Install dependencies
+              run: pnpm install
+            - name: Build Vue project
+              run: pnpm build
