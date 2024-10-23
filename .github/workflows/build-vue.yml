@@ -2,14 +2,12 @@ name: Build Vue
 run-name: Vue build triggered by ${{ github.actor }}
 on:
     push:
-      branches: [ $default-branch ]
       paths:
         - 'public/**'
         - 'src/ui/**'
         - 'index.html'
         - 'package.json'
     pull_request:
-      branches: [ $default-branch ]
       paths:
         - 'public/**'
         - 'src/ui/**'
