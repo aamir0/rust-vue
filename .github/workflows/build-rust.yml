@@ -4,12 +4,12 @@ on:
   push:
     branches: [ $default-branch ]
     paths:
-      - 'src/api/*'
+      - 'src/api/**'
       - 'Cargo.toml'
   pull_request:
     branches: [ $default-branch ]
     paths:
-      - 'src/api/*'
+      - 'src/api/**'
       - 'Cargo.toml'
 
 env:

@@ -4,15 +4,15 @@ on:
     push:
       branches: [ $default-branch ]
       paths:
-        - 'public/*'
-        - 'src/ui/*'
+        - 'public/**'
+        - 'src/ui/**'
         - 'index.html'
         - 'package.json'
     pull_request:
       branches: [ $default-branch ]
       paths:
-        - 'public/*'
-        - 'src/ui/*'
+        - 'public/**'
+        - 'src/ui/**'
         - 'index.html'
         - 'package.json'
 
