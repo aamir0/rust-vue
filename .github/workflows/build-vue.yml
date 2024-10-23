@@ -1,19 +1,28 @@
 name: Build Vue
 run-name: Vue build triggered by ${{ github.actor }}
-on: [push]
+on:
+    push:
+      branches: [ $default-branch ]
+    pull_request:
+      branches: [ $default-branch ]
+
 jobs:
     Build-Vue:
         runs-on: ubuntu-latest
         steps:
             - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
               uses: actions/checkout@v4
+
             - name: Install pnpm
               uses: pnpm/action-setup@v4
               with:
                 version: 9
+
             - name: Install dependencies
               run: pnpm install
-            - name: Run unit tests
-              run: pnpm exec vitest
+
             - name: Build Vue project
               run: pnpm build
+
+            - name: Run unit tests
+              run: pnpm exec vitest

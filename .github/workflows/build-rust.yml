@@ -1,17 +1,28 @@
 name: Build Rust
 run-name: Rust build triggered by ${{ github.actor }}
-on: [push]
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
     Build-Rust:
         runs-on: ubuntu-latest
         steps:
             - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
               uses: actions/checkout@v4
+
             - name: Install Rust toolchain
               uses: actions-rs/toolchain@v1
               with:
                 toolchain: stable
-            - name: Run unit tests
-              run: cargo test
+
             - name: Build Rust project
-              run: cargo build --release --all-features
+              run: cargo build --verbose --release --all-features
+
+            - name: Run unit tests
+              run: cargo test --verbose
