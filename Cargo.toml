@@ -1,9 +1,14 @@
 [package]
 name = "rust-vue"
 version = "0.1.0"
+authors = ["Aamir"]
+description = "Monorepo with Vue and Rust (WASM)"
+repository = "https://github.com/aamir0/rust-vue"
 edition = "2021"
 
 [dependencies]
+wasm-bindgen = "0.2"
 
 [lib]
 path = "src/api/lib.rs"
+crate-type = ["cdylib"]
