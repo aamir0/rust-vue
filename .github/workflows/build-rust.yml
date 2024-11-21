@@ -5,10 +5,12 @@ on:
     paths:
       - 'src/api/**'
       - 'Cargo.toml'
+      - '.github/workflows/build-rust.yml'
   pull_request:
     paths:
       - 'src/api/**'
       - 'Cargo.toml'
+      - '.github/workflows/build-rust.yml'
 
 env:
   CARGO_TERM_COLOR: always

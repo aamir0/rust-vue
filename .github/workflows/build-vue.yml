@@ -7,12 +7,14 @@ on:
         - 'src/ui/**'
         - 'index.html'
         - 'package.json'
+        - '.github/workflows/build-vue.yml'
     pull_request:
       paths:
         - 'public/**'
         - 'src/ui/**'
         - 'index.html'
         - 'package.json'
+        - '.github/workflows/build-vue.yml'
 
 jobs:
     Build-Vue:
