@@ -39,6 +39,11 @@ jobs:
 
             - name: Run unit tests
               run: cargo test --verbose
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                version: 9
             
             - name: Install wasm-pack CLI tool
               run: pnpm install -g wasm-pack
@@ -53,11 +58,6 @@ jobs:
         steps:
             - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
               uses: actions/checkout@v4
-
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
-              with:
-                version: 9
 
             - name: Install dependencies
               run: pnpm install
