@@ -30,3 +30,6 @@ jobs:
 
             - name: Run unit tests
               run: cargo test --verbose
+            
+            - name: Update wasm module
+              run: wasm-pack build --target bundler
