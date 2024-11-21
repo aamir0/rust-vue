@@ -1,0 +1,66 @@
+name: Build
+run-name: Build triggered by ${{ github.actor }}
+on:
+  push:
+    paths:
+      - 'public/**'
+      - 'src/**'
+      - 'index.html'
+      - 'package.json'
+      - 'Cargo.toml'
+      - '.github/workflows/build.yml'
+  pull_request:
+    paths:
+      - 'public/**'
+      - 'src/**'
+      - 'index.html'
+      - 'package.json'
+      - 'Cargo.toml'
+      - '.github/workflows/build.yml'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+    Build-Rust:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
+              uses: actions/checkout@v4
+
+            - name: Install Rust toolchain
+              uses: actions-rs/toolchain@v1
+              with:
+                toolchain: stable
+
+            - name: Build Rust project
+              run: cargo build --verbose --release --all-features
+
+            - name: Run unit tests
+              run: cargo test --verbose
+            
+            - name: Install wasm-pack CLI tool
+              run: cargo install wasm-pack
+            
+            - name: Update wasm module
+              run: wasm-pack build --target bundler
+
+    Build-Vue:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
+              uses: actions/checkout@v4
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                version: 9
+
+            - name: Install dependencies
+              run: pnpm install
+
+            - name: Build Vue project
+              run: pnpm build
+
+            - name: Run unit tests
+              run: pnpm exec vitest
