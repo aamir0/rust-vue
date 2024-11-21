@@ -22,7 +22,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-    Build-Rust:
+    build-rust:
+        name: Build Rust
         runs-on: ubuntu-latest
         steps:
             - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
@@ -45,7 +46,9 @@ jobs:
             - name: Update wasm module
               run: wasm-pack build --target bundler
 
-    Build-Vue:
+    build-vue:
+        name: Build Vue
+        needs: build-rust
         runs-on: ubuntu-latest
         steps:
             - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
