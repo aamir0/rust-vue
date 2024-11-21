@@ -45,8 +45,8 @@ jobs:
               with:
                 version: 9
             
-            - name: Install wasm-pack CLI tool
-              run: pnpm install -g wasm-pack
+            - name: Install dependencies
+              run: pnpm install
             
             - name: Update wasm module
               run: wasm-pack build --target bundler
@@ -58,9 +58,6 @@ jobs:
         steps:
             - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
               uses: actions/checkout@v4
-
-            - name: Install dependencies
-              run: pnpm install
 
             - name: Build Vue project
               run: pnpm build
