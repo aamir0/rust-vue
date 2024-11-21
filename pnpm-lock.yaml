@@ -11,6 +11,12 @@ importers:
       pinia:
         specifier: ^2.2.4
         version: 2.2.4(typescript@5.5.4)(vue@3.5.12(typescript@5.5.4))
+      rust-vue:
+        specifier: link:pkg
+        version: link:pkg
+      vite-plugin-wasm:
+        specifier: ^3.3.0
+        version: 3.3.0(vite@5.4.9(@types/node@20.16.12))
       vue:
         specifier: ^3.5.12
         version: 3.5.12(typescript@5.5.4)
@@ -2231,6 +2237,11 @@ packages:
     resolution: {integrity: sha512-I1JadzO+xYX887S39Do+paRePCKoiDrWRRjp9kkG5he0t7RXNvPAJPCQSJqbGN4uCrFFeS3Kj3sLqY8NMYBEdA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
+
+  vite-plugin-wasm@3.3.0:
+    resolution: {integrity: sha512-tVhz6w+W9MVsOCHzxo6SSMSswCeIw4HTrXEi6qL3IRzATl83jl09JVO1djBqPSwfjgnpVHNLYcaMbaDX5WB/pg==}
+    peerDependencies:
+      vite: ^2 || ^3 || ^4 || ^5
 
   vite@5.4.9:
     resolution: {integrity: sha512-20OVpJHh0PAM0oSOELa5GaZNWeDjcAvQjGXy2Uyr+Tp+/D2/Hdz6NLgpJLsarPTA2QJ6v8mX2P1ZfbsSKvdMkg==}
@@ -4649,6 +4660,10 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+
+  vite-plugin-wasm@3.3.0(vite@5.4.9(@types/node@20.16.12)):
+    dependencies:
+      vite: 5.4.9(@types/node@20.16.12)
 
   vite@5.4.9(@types/node@20.16.12):
     dependencies:
