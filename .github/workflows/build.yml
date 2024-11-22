@@ -60,6 +60,14 @@ jobs:
             - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
               uses: actions/checkout@v4
 
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                version: 9
+            
+            - name: Install dependencies
+              run: pnpm install
+
             - name: Build Vue project
               run: pnpm build
 
