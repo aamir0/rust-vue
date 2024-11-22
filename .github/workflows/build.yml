@@ -22,8 +22,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-    build-rust:
-        name: Build Rust
+    build:
+        name: Build
         runs-on: ubuntu-latest
         steps:
             - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
@@ -37,7 +37,7 @@ jobs:
             - name: Build Rust project
               run: cargo build --verbose --release --all-features
 
-            - name: Run unit tests
+            - name: Run Rust unit tests
               run: cargo test --verbose
 
             - name: Install pnpm
@@ -48,28 +48,12 @@ jobs:
             - name: Install dependencies
               run: pnpm install
             
-            - name: Update wasm module
+            - name: Build wasm module
               run: ./wasm-pack build --target bundler
               working-directory: ./node_modules/.bin
-
-    build-vue:
-        name: Build Vue
-        needs: build-rust
-        runs-on: ubuntu-latest
-        steps:
-            - name: Check out branch ${{ github.ref }} from ${{ github.repository }}
-              uses: actions/checkout@v4
-
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
-              with:
-                version: 9
-            
-            - name: Install dependencies
-              run: pnpm install
 
             - name: Build Vue project
               run: pnpm build
 
-            - name: Run unit tests
+            - name: Run Vue unit tests
               run: pnpm exec vitest
