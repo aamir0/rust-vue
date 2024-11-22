@@ -49,7 +49,7 @@ jobs:
               run: pnpm install
             
             - name: Update wasm module
-              run: wasm-pack build --target bundler
+              run: ./node_modules/bin/wasm-pack build --target bundler
 
     build-vue:
         name: Build Vue
