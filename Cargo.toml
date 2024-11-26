@@ -7,8 +7,12 @@ repository = "https://github.com/aamir0/rust-vue"
 edition = "2021"
 
 [dependencies]
+prost = "0.13.3"
 wasm-bindgen = "0.2"
 
 [lib]
 path = "src/api/lib.rs"
 crate-type = ["cdylib"]
+
+[build-dependencies]
+prost-build = "0.13.3"
