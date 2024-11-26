@@ -33,9 +33,6 @@ jobs:
               uses: actions-rs/toolchain@v1
               with:
                 toolchain: stable
-            
-            - name: Install Protoc
-              uses: arduino/setup-protoc@v3
 
             - name: Build Rust project
               run: cargo build --verbose --release --all-features
@@ -50,6 +47,9 @@ jobs:
             
             - name: Install dependencies
               run: pnpm install
+            
+            - name: Generate JS classes from Protocol Buffers
+              run: pnpm exec protoc --ts_out src/protobuf --proto_path src/protobuf src/protobuf/items.proto
             
             - name: Build wasm module
               run: pnpm exec wasm-pack build --target bundler

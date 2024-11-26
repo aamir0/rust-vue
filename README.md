@@ -3,10 +3,6 @@
 # rust-vue
 Set up monorepo with GitHub Actions using Rust and Vue
 
-## Dependencies
-
-- protoc
-
 ## Building
 
 ### Rust
@@ -17,11 +13,13 @@ wasm-pack build --target bundler
 Protobuf classes available in Cargo `OUT_DIR` (/target/build/rust-vue-xxx/out/snazzy.items.rs)
 
 ### Vue
+
+#### Protobuf
 ```
-protoc --js_out=import_style=commonjs,binary:. src/protobuf/items.proto
+pnpm exec protoc --ts_out src/protobuf --proto_path src/protobuf src/protobuf/items.proto
 ```
 
-Protobuf classes available at /src/protobuf/items_pb.js
+Protobuf classes available at /src/protobuf/items.ts
 
 ## Running
 ```
