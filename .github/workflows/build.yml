@@ -33,6 +33,9 @@ jobs:
               uses: actions-rs/toolchain@v1
               with:
                 toolchain: stable
+            
+            - name: Install Protoc
+              uses: arduino/setup-protoc@v3
 
             - name: Build Rust project
               run: cargo build --verbose --release --all-features
