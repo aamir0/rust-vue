@@ -52,8 +52,7 @@ jobs:
               run: pnpm install
             
             - name: Build wasm module
-              run: ./wasm-pack build --target bundler
-              working-directory: ./node_modules/.bin
+              run: pnpm exec wasm-pack build --target bundler
 
             - name: Build Vue project
               run: pnpm build
