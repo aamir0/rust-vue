@@ -10,6 +10,8 @@ Set up monorepo with GitHub Actions using Rust and Vue
 wasm-pack build --target bundler
 ```
 
+Protobuf classes available in Cargo `OUT_DIR` (/target/build/rust-vue-xxx/out/snazzy.items.rs)
+
 ## Running
 ```
 pnpm dev
